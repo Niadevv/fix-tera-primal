@@ -1053,7 +1053,8 @@ export class Pokemon {
 
 			if (this.getDynamaxRequest()) data.canDynamax = true;
 			if (data.canDynamax || this.volatiles['dynamax']) data.maxMoves = this.getDynamaxRequest(true);
-			if (this.canTerastallize) data.canTerastallize = this.canTerastallize;
+			const canTerastallize = this.battle.actions.canTerastallize(this);
+			if (this.canTerastallize && canTerastallize) data.canTerastallize = this.canTerastallize;
 		}
 
 		return data;
